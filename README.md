@@ -7,4 +7,4 @@ Test using the function expEval() which accepts one argument in the
 form of a string with a valid expression (as defined in module documentation). 
 
 Option 2:
-Edit buttontest.py and add test cases and run it as a script. 
+Edit buttontest.py (add test cases) and run it as a script. 
