@@ -29,12 +29,13 @@ def expEval(s):
     num = None
     
     while s!=str(num):
-        sub = s[len(s)-5:].split()
+        lastOp = max(s.rfind("+ "), s.rfind("- "))
+        sub = s[lastOp:].split()
         if sub[0] == "+":
             num = int(sub[1]) + int(sub[2])
         else:
             num = int(sub[1]) - int(sub[2])
-        s = s[:len(s)-5] + str(num)
+        s = s[:lastOp] + str(num)
     return num
     
         

@@ -20,7 +20,8 @@ class Test(unittest.TestCase):
         """Tests various cases for function expEval()"""
         self.assertEqual(6, button.expEval("+ 1 + 2 3"))
         self.assertEqual(-1, button.expEval("- 5 + 1 + 2 3"))
-        #self.assertEqual(2, button.expEval("- 1 - 2 3"))
+        self.assertEqual(2, button.expEval("- 1 - 2 3"))
+        self.assertEqual(11, button.expEval("- 1 - 10 20"))
         self.assertEqual(0, button.expEval("- 0 0"))
         self.assertEqual(0, button.expEval("+ 0 0"))
         with self.assertRaises(AssertionError):
