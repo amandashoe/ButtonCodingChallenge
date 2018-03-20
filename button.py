@@ -20,22 +20,33 @@ Amanda Xu
 def expEval(s):
     """Returns: Integer value of the evaluated expression in string s.
 
+    Evaluates number expressions and operator expressions.
+    
+    Accepts strings with integer inputs (positive and negative). User can also choose
+    to include redundant "+" to denote positive integers. Operator expressions can be nested.
+    All other rules specified in module header.
+
     Parameter s: the string with expression to evaluate
     Precondition: s is a space delimited string with a valid expression containing only
     operators +, - and integer numbers"""
+    
     assert isinstance(s, str), "Must input string"
     assert len(s) > 0, "String cannot be empty"
     
+    if not "+ " in s and not "- " in s: #numbers are expressions and evaluate to themselves
+        return int(s)
+    
     num = None
     
-    while s!=str(num):
-        lastOp = max(s.rfind("+ "), s.rfind("- "))
-        sub = s[lastOp:].split()
-        if sub[0] == "+":
-            num = int(sub[1]) + int(sub[2])
-        else:
-            num = int(sub[1]) - int(sub[2])
-        s = s[:lastOp] + str(num)
+    while s!=str(num): 
+        lastOp = max(s.rfind("+ "), s.rfind("- ")) #accounts for "-" used to denote negative ints as
+                                                   #well as "+" redundantly used to denote positive ints
+        sub = s[lastOp:].split() #separates elements of expression
+        if sub[0] == "+": #addition
+            num = int(sub[1]) + int(sub[2]) #evaluation
+        else: #subtraction
+            num = int(sub[1]) - int(sub[2]) #evaluation
+        s = s[:lastOp] + str(num) #in case there are nested expressions
     return num
     
         
