@@ -27,6 +27,8 @@ class Test(unittest.TestCase):
         self.assertEqual(0, button.expEval("- 0 0")) 
         self.assertEqual(0, button.expEval("+ 0 0"))
         self.assertEqual(6, button.expEval("+ 1 + 2 3")) #nested operator expressions
+        self.assertEqual(3, button.expEval("+ + 1 1 1")) #nested nested expressions
+        self.assertEqual(4, button.expEval("+ + 1 1 + 1 1"))
         self.assertEqual(0, button.expEval("+ 1 + 2 -3"))
         self.assertEqual(6, button.expEval("+ 1 + 2 +3"))
         self.assertEqual(-1, button.expEval("- 5 + 1 + 2 3"))

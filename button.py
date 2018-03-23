@@ -42,11 +42,19 @@ def expEval(s):
         lastOp = max(s.rfind("+ "), s.rfind("- ")) #accounts for "-" used to denote negative ints as
                                                    #well as "+" redundantly used to denote positive ints
         sub = s[lastOp:].split() #separates elements of expression
+        
         if sub[0] == "+": #addition
             num = int(sub[1]) + int(sub[2]) #evaluation
         else: #subtraction
             num = int(sub[1]) - int(sub[2]) #evaluation
-        s = s[:lastOp] + str(num) #in case there are nested expressions
+            
+        if len(sub) == 3:
+            s = s[:lastOp] + str(num) #in case there are nested expressions
+        elif len(sub) > 3: #in case there are nested nested expressions
+            rest = " "
+            for x in range(3, len(sub)):
+                rest = rest+" "+sub[x]
+            s = s[:lastOp] + str(num) + rest
     return num
     
         
